@@ -4,41 +4,35 @@
   import InfoCircle from "svelte-icons/fa/FaInfoCircle.svelte";
   import Generator from "./Generator.svelte";
   import List from "./List.svelte";
+  import Info from "./Info.svelte";
 
-  export const foodOptions = [
-    "Tostadas",
-    "Hawaiian haystacks",
-    "Spaghetti",
-    "Enchiladas",
-    "Mandarin chicken salad",
-    "Cincinnati chili",
-    "Pasta salad",
-    "Pizza",
-    "Stir fry",
-    "Mashed potato bowls",
-    "Breakfast",
-    "Noodle casserole",
-    "Tacos",
-    "Hot dogs",
-    "Sliders",
-    "Beef and Broccoli",
-    "Soup",
-    "Sandwiches of various kinds",
-    "Fajitas/burritos",
-    "Garlic chicken",
-  ];
+  export let foodOptions = JSON.parse(localStorage.getItem("foodOptions"));
+
+  function handleCreate(event) {
+    if (event.detail.food) {
+      foodOptions = [...foodOptions, event.detail.food].sort((a, b) =>
+        a > b ? 1 : -1
+      );
+      localStorage.setItem("foodOptions", JSON.stringify(foodOptions));
+    }
+  }
+
+  function handleDestroy(event) {
+    foodOptions = foodOptions.filter((i) => i !== event.detail.food);
+    localStorage.setItem("foodOptions", JSON.stringify(foodOptions));
+  }
 
   let currentTab = 1;
 </script>
 
 {#if currentTab === 0}
-  <List {foodOptions} />
+  <List {foodOptions} on:create={handleCreate} on:destroy={handleDestroy} />
 {/if}
 {#if currentTab === 1}
   <Generator {foodOptions} />
 {/if}
 {#if currentTab === 2}
-  <List {foodOptions} />
+  <Info />
 {/if}
 
 <footer>

@@ -1,14 +1,36 @@
 <script>
   export let foodOptions;
-  import MinusSquare from "svelte-icons/fa/FaMinusSquare.svelte";
+
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+
+  function create(event) {
+    let food = prompt("Name of Food:", "");
+    dispatch("create", { food });
+  }
+
+  function destroy(event) {
+    dispatch("destroy", {
+      food: event.target.name,
+    });
+  }
 </script>
 
+<header>
+  <button on:click={create}> + Add New Food </button>
+</header>
+
 <main>
-  <button>+ Add New Food</button>
   <table>
     {#each foodOptions as food}
       <tr>
-        <td><button><div class="icon"><MinusSquare /></div></button></td>
+        <td>
+          <button on:click={destroy} name={food} aria-label="delete">
+            &ndash;
+            <!-- <div class="icon"><MinusSquare /></div> -->
+          </button>
+        </td>
         <td>{food}</td>
       </tr>
     {/each}
@@ -19,19 +41,25 @@
 </main>
 
 <style>
+  header {
+    display: flex;
+    justify-content: center;
+  }
+  main {
+    max-height: calc(100vh - 165px);
+  }
   table {
     text-align: left;
   }
   td {
     display: inline-flex;
     align-items: center;
+    margin: 0.25em 0;
   }
   td button {
-    margin: 0;
+    margin: 0 0.5em 0 0;
     background: transparent;
-  }
-
-  td button div {
-    height: 1em;
+    padding: 0 0.5em;
+    font-weight: bolder;
   }
 </style>
