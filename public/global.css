@@ -29,7 +29,7 @@ main {
   max-width: 500px;
   margin: 0 auto;
   overflow: auto;
-  max-height: calc(100vh - 123px);
+  max-height: calc(100vh - 114px);
 }
 
 h1,
@@ -124,6 +124,6 @@ footer {
   left: 0;
   width: 100%;
   padding-top: 0.25em;
-  padding-bottom: 0.75em;
+  padding-bottom: 3px;
   display: block;
 }

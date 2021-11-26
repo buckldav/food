@@ -51,7 +51,7 @@
   }
 
   main {
-    max-height: calc(100vh - 165px);
+    max-height: calc(100vh - 156px);
   }
 
   table {
