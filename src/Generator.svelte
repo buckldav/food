@@ -1,16 +1,25 @@
 <script>
   export let foodOptions;
-  let days = 4;
+  export function changeTab() {}
+  let days = 5;
   let generated = [];
 
+  /**
+   * Generates food list. If foodOptions < days, food will be reused, else food in list will be unique.
+   * @param e
+   */
   const generateFoodList = (e) => {
     e.preventDefault();
     generated = [];
+    let usedFoods = [];
     while (generated.length < days) {
+      if (usedFoods.length === foodOptions.length) usedFoods = [];
       const rando = foodOptions[Math.floor(Math.random() * foodOptions.length)];
-      if (!generated.includes(rando)) generated.push(rando);
+      if (!usedFoods.includes(rando)) {
+        generated.push(rando);
+        usedFoods.push(rando);
+      }
     }
-    console.log(generated);
   };
 </script>
 
@@ -27,7 +36,7 @@
         days = e.target.value;
       }}
     />
-    <button type="submit">Gimme Food</button>
+    <button type="submit" disabled={!foodOptions.length}>Gimme Food</button>
   </form>
 
   <ul>

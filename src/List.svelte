@@ -45,21 +45,26 @@
     display: flex;
     justify-content: center;
   }
+
   main {
     max-height: calc(100vh - 165px);
   }
+
   table {
     text-align: left;
   }
+
   td {
     display: inline-flex;
     align-items: center;
     margin: 0.25em 0;
   }
+
   td button {
     margin: 0 0.5em 0 0;
     background: transparent;
     padding: 0 0.5em;
     font-weight: bolder;
+    color: var(--green);
   }
 </style>
