@@ -1,3 +1,7 @@
+<script>
+  const year = new Date().getFullYear();
+</script>
+
 <main>
   <h1>What is Food?</h1>
 
@@ -7,5 +11,5 @@
       >davidjaybuckley.com/developer</a
     >.
   </p>
-  <p>&copy; 2022 - davidjaybuckley</p>
+  <p>&copy; {year} - davidjaybuckley</p>
 </main>

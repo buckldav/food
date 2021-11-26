@@ -7,6 +7,7 @@
   import Info from "./Info.svelte";
 
   export let foodOptions = JSON.parse(localStorage.getItem("foodOptions"));
+  foodOptions = foodOptions ? foodOptions : [];
 
   function handleCreate(event) {
     if (event.detail.food) {
