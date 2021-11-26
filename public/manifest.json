@@ -1,0 +1,20 @@
+{
+    "name": "Food",
+    "short_name": "Food",
+    "icons": [
+      {
+        "src": "/favicon.png",
+        "sizes": "64x64",
+        "type": "image/png"
+      }, 
+      {
+        "src": "/favicon-512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#495867",
+    "theme_color": "#FFFFFF"
+  }

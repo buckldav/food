@@ -47,6 +47,7 @@
     </button>
     <button
       class={currentTab === 1 && "current"}
+      disabled={foodOptions.length === 0}
       on:click={() => (currentTab = 1)}
     >
       <div class="icon"><Hamburger /></div>
@@ -54,6 +55,7 @@
     </button>
     <button
       class={currentTab === 2 && "current"}
+      disabled={foodOptions.length === 0}
       on:click={() => (currentTab = 2)}
     >
       <div class="icon"><InfoCircle /></div>
@@ -77,6 +79,10 @@
     width: 90px;
     color: var(--black);
     border: 0;
+  }
+
+  footer nav button:disabled {
+    opacity: 0.3;
   }
 
   footer nav button.current {

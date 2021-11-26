@@ -22,6 +22,10 @@
 </header>
 
 <main>
+  {#if foodOptions.length === 0}
+    <p>Welcome to FOOD! Add foods here to begin.</p>
+  {/if}
+
   <table>
     {#each foodOptions as food}
       <tr>
